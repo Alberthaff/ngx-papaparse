@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ParseResult } from './interfaces/parse-result';
 import { ParseConfig } from './interfaces/parse-config';
 import { UnparseConfig } from './interfaces/unparse-config';
+import { UnparseData } from './interfaces/unparse-data';
 import * as lib from 'papaparse/papaparse.min.js';
 
 @Injectable({
@@ -13,14 +14,14 @@ export class Papa {
     /**
      * Parse CSV to an array
      */
-    public parse(csv: string|File, config?: ParseConfig): ParseResult {
+    public parse(csv: string|Blob, config?: ParseConfig): ParseResult {
         return this._papa.parse(csv, config);
     }
 
     /**
      * Convert an array into CSV
      */
-    public unparse(data, config?: UnparseConfig): string {
+    public unparse(data: UnparseData, config?: UnparseConfig): string {
         return this._papa.unparse(data, config);
     }
 
